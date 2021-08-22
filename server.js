@@ -14,6 +14,7 @@ connectDB();
 
 app.use("/api/users", users);
 app.get("/dashboard", protect, admin, dashboard);
+app.get("/logout", protect, logout);
 
 const PORT = 5000;
 app.get("/", (req, res) => {
