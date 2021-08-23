@@ -1,5 +1,5 @@
 const dashboard = async (req, res) => {
-  res.send("dashboard");
+  res.send("Dashboard Page");
 };
 
 exports.dashboard = dashboard;

@@ -13,10 +13,10 @@ router.post("/register", async (req, res) => {
       const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: bcript.hashSync(req.body.password, 10),
+        password: bcrypt.hashSync(req.body.password, 10),
       });
       await user.save();
-      res.send(user);
+      res.send({ user, token: generateToken(user._id) });
       console.log("succed");
     } catch (error) {
       res.status(400).send(error.message);
@@ -26,12 +26,17 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  // if (req.headers.authorization) {
   let user = await User.findOne({ email: req.body.email });
   if (user && (await bcrypt.compare(req.body.password, user.password))) {
     res.send({ _id: user._id, token: generateToken(user._id) });
   } else {
     res.status(401).send("email or password is incorrect");
   }
+  // } else
+  //  {
+  // res.redirect("/");
+  // }
 });
 
 

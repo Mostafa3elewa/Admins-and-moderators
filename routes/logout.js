@@ -1,7 +1,9 @@
-const distroyToken = require("../utils/distroToken");
+//const { Router } = require("express");
+const distroyToken = require("../utils/distroyToken");
+let destroyedtoken;
 
 const logout = (req, res) => {
-  res.send({ token: distroyToken(" ") });
-  res.redirect("/");
+  console.log(destroyedtoken);
+  res.send({ token: distroyToken(destroyedtoken) });
 };
 exports.logout = logout;
