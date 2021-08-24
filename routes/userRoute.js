@@ -16,7 +16,7 @@ router.post("/register", async (req, res) => {
         password: bcrypt.hashSync(req.body.password, 10),
       });
       await user.save();
-      res.send({ user, token: generateToken(user._id) });
+      res.send({ name: user.name, email: user.email, token: generateToken(user._id) });
       console.log("succed");
     } catch (error) {
       res.status(400).send(error.message);
