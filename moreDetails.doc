@@ -23,7 +23,29 @@ Finally for logging the user out I can’t destroy the token so I will send inva
 
 
 
-ERD diagram for user 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Flow chart of the server  
  
 
 
@@ -38,7 +60,6 @@ ERD diagram for user
 
 
 
-Flow chart of the server 
 
 
 
@@ -48,3 +69,73 @@ Flow chart of the server
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ERD diagram for user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Packages used:
+
+
+    1. express: to handle the requests and the routing.
+    2. bcryptjs: to encypt tha password.
+    3. colors: to colorise the logs.
+    4. dotenv:to use variables from .env file.
+    5. jsonwebtoken: to generate the token.
+    6. jwt-check-expiration: to check if the token expired or not.
+    7. mongoose:: to deal with mongoDB.
+    8. nodemon:to restart the server with every edit.
