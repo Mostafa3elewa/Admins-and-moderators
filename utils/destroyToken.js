@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-const distroyToken = (space) => {
+const destroyToken = (space) => {
   return jwt.sign({ space }, process.env.TOKEN_SECRET, { expiresIn: "1" });
 };
 
-module.exports = distroyToken;
+module.exports = destroyToken;

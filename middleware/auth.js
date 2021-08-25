@@ -28,11 +28,15 @@ const admin = (req, res, next) => {
   }
 };
 const protectLoginAndRegister = (req, res, next) => {
-  let token = req.headers.authorization.split(" ")[1];
-  console.log(token);
-  // const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-  if (!isJwtExpired(req.headers.authorization)) {
-    res.redirect("/");
+  if (req.headers.authorization) {
+    let token = req.headers.authorization.split(" ")[1];
+    console.log(token);
+    // const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    if (!isJwtExpired(req.headers.authorization) || req.headers.authorization === null) {
+      res.redirect("/");
+    } else {
+      next();
+    }
   } else {
     next();
   }
