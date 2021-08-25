@@ -5,11 +5,14 @@ const generateToken = require("../utils/generateToken");
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
+  //check if the user already foun(same email)
   let user = await User.findOne({ email: req.body.email });
   if (user) {
     return res
       .status(400)
       .send({ errorMessage: "Email already in use!", token: req.headers.authorization });
+
+    //check if the phone number already in use
   } else if (await User.findOne({ mobileNumber: req.body.mobileNumber })) {
     try {
       const user = new User({
@@ -26,12 +29,12 @@ router.post("/register", async (req, res) => {
         email: user.email,
         token: generateToken(user._id),
       });
-      //console.log("succed");
     } catch (error) {
       res.status(400).send(error.message);
-      console.error(error);
+      console.error(error.red);
     }
   } else {
+    //save the user as it's
     try {
       const user = new User({
         firstName: req.body.firstName,
@@ -48,13 +51,14 @@ router.post("/register", async (req, res) => {
         mobileNumber: req.body.mobileNumber,
         token: generateToken(user._id),
       });
-      // console.log("succed");
     } catch (error) {
       res.status(400).send(error.message);
       console.error(error);
     }
   }
 });
+
+// login user with mail and password
 
 router.post("/login", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
