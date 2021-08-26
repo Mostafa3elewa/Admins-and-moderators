@@ -1,17 +1,15 @@
+﻿    • Clone the repository 
+                    ◦ git clone https://github.com/Mostafa3elewa/Fatura-test.git
 
-Clone the repository
+    • Install dependencies 
+        ◦ cd Fatura-test
+        ◦ npm install
 
 
+    • rename <.env sample> to <.env>
 
-git clone  https://github.com/Mostafa3elewa/Fatura-test.git
 
-Install dependencies
-
-cd <project_name>
-npm install
-
-    Build and run the project
-
-npm start
-
-Navigate to http://localhost:8001
+    • Build and run the project 
+        ◦ npm start
+        ◦ Navigate to http://localhost:5000
+          
