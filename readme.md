@@ -1,5 +1,17 @@
-How to use 
-1- clone the repo
-2-open the terminal and  run << npm i>> to install the node modules used
-3-run << npm start server >> to run the backend server 
-4- the server will run on loacalhost:5000
+
+Clone the repository
+
+
+
+git clone  https://github.com/Mostafa3elewa/Fatura-test.git
+
+Install dependencies
+
+cd <project_name>
+npm install
+
+    Build and run the project
+
+npm start
+
+Navigate to http://localhost:8001
