@@ -1,4 +1,4 @@
 NODE_ENV = development
 PORT = 5000
-MONGO_URI = mongodb+srv://Mostafa:a7etena7a@fatura.y2hre.mongodb.net/FaturaTest?retryWrites=true&w=majority
+MONGO_URI = mongodb+srv://Mostafa:ySq8aLVc3sb5Z5w@fatura.y2hre.mongodb.net/FaturaTest?retryWrites=true&w=majority
 TOKEN_SECRET = A1B2C3
