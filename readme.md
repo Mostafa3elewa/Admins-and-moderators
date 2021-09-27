@@ -7,6 +7,8 @@
 
 
 • you have to buile a <.env> file with next variables
+
+
 NODE_ENV = development
 
 PORT = 5000
