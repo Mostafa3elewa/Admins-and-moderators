@@ -29,8 +29,8 @@ const userSchema = Mongoose.Schema({
     default: false,
   },
   mobileNumber: {
-    type: Number,
-    unique: true,
+    type: String,
+    //unique: true,
   },
 });
 

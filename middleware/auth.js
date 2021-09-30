@@ -59,4 +59,6 @@ const protectLoginAndRegister = (req, res, next) => {
 
 exports.protect = protect;
 exports.admin = admin;
+exports.moderator = moderator;
+
 exports.protectLoginAndRegister = protectLoginAndRegister;

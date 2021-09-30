@@ -4,8 +4,9 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const users = require("./routes/userRoute");
 const { dashboard } = require("./routes/dashboard");
-const { protect, admin, protectLoginAndRegister } = require("./middleware/auth");
+const { protect, admin, protectLoginAndRegister, moderator } = require("./middleware/auth");
 const { logout } = require("./routes/logout");
+const { getAll } = require("./routes/getAll");
 const app = express();
 
 app.use(express.json());
@@ -15,6 +16,8 @@ connectDB();
 app.use("/api/users", protectLoginAndRegister, users);
 app.get("/dashboard", protect, admin, dashboard);
 app.get("/logout", protect, logout);
+app.get("/getAll",protect,moderator, getAll);
+
 
 const PORT = process.env.PORT;
 app.get("/", (req, res) => {

@@ -21,7 +21,8 @@ router.post("/register", async (req, res) => {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
         admin:req.body.admin,
-        moderator:req.body.moderator
+        moderator:req.body.moderator,
+        // mobileNumber:"used before"
       });
       await user.save();
       res.send({
@@ -72,6 +73,7 @@ router.post("/login", async (req, res) => {
     res.status(401).send("email or password is incorrect");
   }
 });
+
 
 
 module.exports = router;
