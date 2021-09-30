@@ -8,7 +8,7 @@ const protect = async (req, res, next) => {
   if (req.headers.authorization) {
     try {
       let token = req.headers.authorization.split(" ")[1];
-      console.log(token);
+      // console.log(token);
 
       //verify the token
       const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
@@ -27,7 +27,15 @@ const protect = async (req, res, next) => {
 };
 //check if the user logged in is admin or not
 const admin = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
+  if (req.user && req.user.admin) {
+    next();
+  } else {
+    res.status(401).redirect("/");
+  }
+};
+
+const moderator = (req, res, next) => {
+  if (req.user && req.user.moderator) {
     next();
   } else {
     res.status(401).redirect("/");
@@ -38,7 +46,7 @@ const admin = (req, res, next) => {
 const protectLoginAndRegister = (req, res, next) => {
   if (req.headers.authorization) {
     let token = req.headers.authorization.split(" ")[1];
-    console.log(token);
+    // console.log(token);
     if (!isJwtExpired(req.headers.authorization) || req.headers.authorization === null) {
       res.redirect("/");
     } else {
