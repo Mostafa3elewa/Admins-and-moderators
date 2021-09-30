@@ -20,6 +20,8 @@ router.post("/register", async (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
+        admin:req.body.admin,
+        moderator:req.body.moderator
       });
       await user.save();
       res.send({
@@ -42,6 +44,8 @@ router.post("/register", async (req, res) => {
         email: req.body.email,
         mobileNumber: req.body.mobileNumber,
         password: bcrypt.hashSync(req.body.password, 10),
+        admin:req.body.admin,
+        moderator:req.body.moderator
       });
       await user.save();
       res.send({

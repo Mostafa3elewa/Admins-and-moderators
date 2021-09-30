@@ -16,7 +16,7 @@ app.use("/api/users", protectLoginAndRegister, users);
 app.get("/dashboard", protect, admin, dashboard);
 app.get("/logout", protect, logout);
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 app.get("/", (req, res) => {
   res.send(`Home Page`);
 });

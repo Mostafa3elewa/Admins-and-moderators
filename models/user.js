@@ -18,7 +18,12 @@ const userSchema = Mongoose.Schema({
     type: String,
     required: true,
   },
-  isAdmin: {
+  admin: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  moderator: {
     type: Boolean,
     required: true,
     default: false,
