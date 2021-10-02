@@ -12,7 +12,7 @@
 
 NODE_ENV = development
 
-PORT = 5000
+PORT = < whatver you want >
 
 MONGO_URI = < here write your mongodb credentials >
 
