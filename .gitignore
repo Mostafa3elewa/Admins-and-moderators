@@ -7,3 +7,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+.vscode/
+
+.Documentation.doc
