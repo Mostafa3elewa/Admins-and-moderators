@@ -7,6 +7,7 @@ const { dashboard } = require("./routes/dashboard");
 const { protect, admin, protectLoginAndRegister, moderator } = require("./middleware/auth");
 const { logout } = require("./routes/logout");
 const { getAll } = require("./routes/getAll");
+const { getUser, updateUser } = require("./routes/updateUser");
 const app = express();
 
 app.use(express.json());
@@ -17,6 +18,10 @@ app.use("/api/users", protectLoginAndRegister, users);
 app.get("/dashboard", protect, admin, dashboard);
 app.get("/logout", protect, logout);
 app.get("/getAll",protect,moderator, getAll);
+app.get("/getUser/:id" , getUser);
+app.put("/updateuser/:id" , updateUser);
+
+
 
 
 const PORT = process.env.PORT;
