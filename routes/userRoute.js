@@ -10,7 +10,10 @@ router.post("/register", async (req, res) => {
   if (user) {
     return res
       .status(400)
-      .send({ errorMessage: "Email already in use!", token: req.headers.authorization });
+      .send({
+        errorMessage: "Email already in use!",
+        token: req.headers.authorization,
+      });
 
     //check if the phone number already in use
   } else if (await User.findOne({ mobileNumber: req.body.mobileNumber })) {
@@ -20,8 +23,6 @@ router.post("/register", async (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
-        admin:req.body.admin,
-        moderator:req.body.moderator,
         // mobileNumber:"used before"
       });
       await user.save();
@@ -45,8 +46,6 @@ router.post("/register", async (req, res) => {
         email: req.body.email,
         mobileNumber: req.body.mobileNumber,
         password: bcrypt.hashSync(req.body.password, 10),
-        admin:req.body.admin,
-        moderator:req.body.moderator
       });
       await user.save();
       res.send({
@@ -73,7 +72,5 @@ router.post("/login", async (req, res) => {
     res.status(401).send("email or password is incorrect");
   }
 });
-
-
 
 module.exports = router;
