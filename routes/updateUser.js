@@ -1,4 +1,7 @@
-const user = require("../models/user");
+//@route     get getuser
+//@desc      get specific user data
+//@access    public
+
 const User = require("../models/user");
 
 // get specific user by id
@@ -13,6 +16,10 @@ const getUser = async (req, res) => {
   }
 };
 
+//@route     put /updateuser/:id
+//@desc      update specific user data
+//@access    private
+
 const updateUser = async (req, res) => {
   id = req.params.id;
 
@@ -23,7 +30,27 @@ const updateUser = async (req, res) => {
       mobileNumber: req.body.mobileNumber,
     })
   ) {
-    res.status(400).send("mobile already used");
+    // save that user
+    await User.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        $set: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          admin: req.body.admin,
+          moderator: req.body.moderator,
+        },
+      },
+      {
+        useFindAndModify: false,
+        new: true,
+      }
+    );
+    // send the updated user
+    res.send(await User.findById(id).select("-password"));
   } else {
     // update user
     try {

@@ -4,16 +4,18 @@ const bcrypt = require("bcryptjs");
 const generateToken = require("../utils/generateToken");
 const router = express.Router();
 
+//@route     post users/register
+//@desc      register new user
+//@access    public
+
 router.post("/register", async (req, res) => {
   //check if the user already foun(same email)
   let user = await User.findOne({ email: req.body.email });
   if (user) {
-    return res
-      .status(400)
-      .send({
-        errorMessage: "Email already in use!",
-        token: req.headers.authorization,
-      });
+    return res.status(400).send({
+      errorMessage: "Email already in use!",
+      token: req.headers.authorization,
+    });
 
     //check if the phone number already in use
   } else if (await User.findOne({ mobileNumber: req.body.mobileNumber })) {
@@ -23,7 +25,6 @@ router.post("/register", async (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
-        // mobileNumber:"used before"
       });
       await user.save();
       res.send({
@@ -62,7 +63,9 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// login user with mail and password
+//@route     post users/login
+//@desc      login with user
+//@access    public
 
 router.post("/login", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });

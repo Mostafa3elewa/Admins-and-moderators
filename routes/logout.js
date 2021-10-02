@@ -1,3 +1,7 @@
+//@route     get logout
+//@desc      logout the user
+//@access    private
+
 const destroyToken = require("../utils/destroyToken");
 let destroyedtoken;
 
